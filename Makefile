@@ -3,7 +3,7 @@ include .env
 .PHONY: up
 
 up:
-	sudo docker-compose up -d
+	sudo docker-compose up -d 
 
 .PHONY: down
 

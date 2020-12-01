@@ -8,13 +8,20 @@ services:
       - ${DB_PORT}:27017
     environment:
       MONGO_INITDB_DATABASE: ${DB_NAME}
-      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
   app:
-    build: .
-    command: npm start
+    image: node:latest
+    container_name: app
+    restart: always
+    env_file:
+     - .env
+    depends_on:
+      - mongo
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     volumes:
-      - .:/usr/app
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: npm start
+    logging:
+      driver: "json-file"
   

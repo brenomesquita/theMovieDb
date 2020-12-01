@@ -42,6 +42,9 @@
    - Using: `npm start` you will initialize the application
    - Using: `make up` you will initialize the with the docker-compose
 
+6. Make the Code Review.
+   - <a href="https://github.com/brenomesquita/theMovieDb/pull/1">Here</a>
+
 ### Application routes:
 #### GET: 'http://localhost:3000/:id' return the api values without insert into our database.
 #### POST: 'http://localhost:3000/:id' request the api and insert the values into our databade. *Duplicate values ​​are not allowed.*
