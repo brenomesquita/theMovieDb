@@ -23,7 +23,7 @@ const getMovieFromDbService = (model) => async (id) => {
   const idInteger = verifyInt(id);
   const modelResponse = await model.findMovieModel(idInteger);
   if (modelResponse.length === 0) return notFound('Value don\'t exists!!');
-  return modelResponse;
+  return modelResponse[0];
 };
 
 const Service = (model) => ({
