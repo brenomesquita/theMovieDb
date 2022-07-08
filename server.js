@@ -2,15 +2,14 @@ require('dotenv').config();
 
 const express = require('express');
 const routes = require('./api/routes');
+const movieApi = require('./service/theMovieApi');
 
 const app = express();
 app.use(express.json());
 
-const { SERVER_PORT, DB_HOST, API_KEY } = process.env;
+const { SERVER_PORT, DB_HOST, API_KEY, DB_URL } = process.env;
 
-routes(app, API_KEY);
-
-// internal server error midware
-app.use((err, _req, res, _next) => res.status(500).json({ message: 'internal error' }));
+// injecting dependencies to routes folder.
+routes(app, API_KEY, movieApi, DB_URL);
 
 app.listen(SERVER_PORT, DB_HOST, () => console.log(`Port: ${SERVER_PORT}, Host: ${DB_HOST}`));
